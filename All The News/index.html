@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>All The News</title>
+    <link rel="stylesheet" type="text/css" href="sdmenu/sdmenu.css" />
+	<script type="text/javascript" src="sdmenu/sdmenu.js">
+		/***********************************************
+		* Slashdot Menu script- By DimX
+		* Submitted to Dynamic Drive DHTML code library: http://www.dynamicdrive.com
+		* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+		***********************************************/
+	</script>
+	<script type="text/javascript">
+	// <![CDATA[
+	var myMenu;
+	window.onload = function() 
+	{
+		myMenu = new SDMenu("my_menu");
+		myMenu.init();
+		myMenu.speed = 5;
+		myMenu.oneSmOnly = false;
+	};
+	// ]]>
+	</script>
+
+    <style type="text/css" media="screen">
+
+	body
+	{
+		/*background-image:url('Religion.jpg');                               Picture instead of just colour              */
+		background-repeat:no-repeat;
+		background-attachment:absolute;                                       /* Whole Screen */
+		background-size:100% 100%;
+		background-position:center;
+		background-color:#B2B2B2;
+	}
+
+	.content
+	{
+	  /* margin-left: 200px;	 */
+	                                                                   /* Center's it */
+	   position: relative;
+
+	   left: 85px;
+	   width:90%;                                                        /* smaller content section*/
+	   background-color:white;
+	   height: 100%;
+	   min-width: 500px;
+
+	   z-index: -1;
+
+    }
+
+     .barLeft
+	{
+		margin-left: 150px;
+		
+		position: absolute;
+		width: 75px;
+		height: 100%;
+		min-width: 10px;
+		background-color: #B2B2B2;
+	}
+
+    .barRight
+	{
+		margin-left: 96%;
+		float: right;
+		position: absolute;
+		width: 4%;
+		height: 100%;
+		min-width: 10px;
+		/*background-color:red;*/
+	}
+
+/*******************************************************************************************************************************
+Header
+********************************************************************************************************************************/
+.header
+ {
+	 margin: 0 auto;                         /* Centers header image*/
+	 display:block;                           /* needed in order to modify maragins for image.*/
+	 height:75px;
+	 width:100%;
+	 z-index:-1;                                  /* moves behind other things */
+}
+/************************************************************************************************************************************************************************************************
+Paragraph
+**************************************************************************************************************************************************************************************************/
+
+    .paragraph
+    {
+    	margin: 0 auto;														/* Center's it */
+	    width:400px;                                                        /* smaller content section*/
+	    background-color:white;
+	    position: relative;
+	    height: 740px;
+	    top: -200px;
+	    left: 0px;
+	    padding-right: 0px;
+	   z-index: 1;
+    }
+
+	.p1
+	{
+		font-size: 25px;
+		text-decoration: underline;
+		text-align: center;
+		padding-right: 60px;
+	}
+	 html, body
+	 {
+	 	margin: 0;
+	 	padding 0;
+     }
+
+}
+    </style>
+</head>
+
+		<body>
+				<div class="header">All The News</div>
+				<div class="barRight"></div>
+				<div class="barLeft"></div>
+			    <div style="float: left" id="my_menu" class="sdmenu">
+			      <div>
+			        <span>Account</span>
+			        <a href="http://tools.dynamicdrive.com/imageoptimizer/">Image Optimizer</a>
+			        <a href="http://tools.dynamicdrive.com/favicon/">FavIcon Generator</a>
+			        <a href="http://www.dynamicdrive.com/emailriddler/">Email Riddler</a>
+			        <a href="http://tools.dynamicdrive.com/password/">htaccess Password</a>
+			        <a href="http://tools.dynamicdrive.com/gradient/">Gradient Image</a>
+			        <a href="http://tools.dynamicdrive.com/button/">Button Maker</a>
+			      </div>
+			      <div>
+			        <span>Sites</span>
+			        <a href="http://www.dynamicdrive.com/recommendit/">Recommend Us</a>
+			        <a href="http://www.dynamicdrive.com/link.htm">Link to Us</a>
+			        <a href="http://www.dynamicdrive.com/resources/">Web Resources</a>
+			      </div>
+			      <div class="collapsed">
+			        <span>Ranking</span>
+			        <a href="http://www.javascriptkit.com">JavaScript Kit</a>
+			        <a href="http://www.cssdrive.com">CSS Drive</a>
+			        <a href="http://www.codingforums.com">CodingForums</a>
+			        <a href="http://www.dynamicdrive.com/style/">CSS Examples</a>
+			      </div>
+			      <div>
+			        <span>About</span>
+			        <a href="?foo=bar">Current or not</a>
+			        <a href="./">Current or not</a>
+			        <a href="index.html">Current or not</a>
+			        <a href="index.html?query">Current or not</a>
+			      </div>
+			    </div>
+
+	  
+
+			<!--<a href="index.html" class="b1 button">Home</a>
+			<a href="About.html" class="b1 button">About</a>
+			<a href="Ministries.html" class="b1 button">Ministries</a>
+			<a href="Contact.html" class="b1 button">Contact</a>
+			-->
+	  	
+		<div class="content">
+			<p>Alex Mayyasi writes that a close look at the cars outside Silicon Valley's venture capital firms reveals that the cars share a mysterious detail: they nearly all have a custom license plate frame that reads, "Member. 11-99 Foundation" which is the charitable organization that supports California Highway Patrol officers and their families in times of crisis. Donors receive one license plate as part of a $2,500 "Classic" level donation, or two as part of a bronze, silver, or gold level donation of $5,000, $10,000, or $25,000. Rumor has it, according to Mayyasi, that the license plate frames come with a lucrative return on investment. As one member of a Mercedes-Benz owners community wrote online back in 2002: "I have the ultimate speeding ticket solution. I paid $1800 for a lifetime membership into the 11-99 foundation. My only goal was to get the infamous 'get out of jail' free license plate frame." </p>
+			
+		</div>
+		
+		</body>
+	</html>
+</div>
