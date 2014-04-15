@@ -27,6 +27,12 @@
 
     <style type="text/css" media="screen">
 
+    html
+    {
+    	
+
+    }
+
 	body
 	{
 		/*background-image:url('Religion.jpg');                               Picture instead of just colour              */
@@ -35,6 +41,7 @@
 		background-size:100% 100%;
 		background-position:center;
 		background-color:#B2B2B2;
+		
 	}
 
 	.content
@@ -43,25 +50,46 @@
 	                                                                   /* Center's it */
 	   position: relative;
 
-	   left: 85px;
+	   left: 175px;
 	   width:90%;                                                        /* smaller content section*/
 	   background-color:white;
 	   height: 100%;
 	   min-width: 500px;
+	   padding-left: 10px;
 
 	   z-index: -1;
+    }
 
+    .info
+	{
+	  /* margin-left: 200px;	 */
+	                                                                   /* Center's it */
+	   position: absolute;
+
+	   left: 50px;
+	   width:90%;                                                        /* smaller content section*/
+	   height: 100%;
+	   min-width: 500px;
+	   padding-left: 10px;
+	   background-color:white;
+
+	   z-index: 10;
     }
 
      .barLeft
 	{
-		margin-left: 150px;
 		
 		position: absolute;
-		width: 75px;
+		left: 0px;
+		top: 0px;
+		bottom: 0px;
+		width: 150px;
+		
 		height: 100%;
-		min-width: 10px;
-		background-color: #B2B2B2;
+		min-width: 150px;
+		background-color: red; 
+
+		z-index: 10;
 	}
 
     .barRight
@@ -121,41 +149,55 @@ Paragraph
 </head>
 
 		<body>
-				<div class="header">All The News</div>
+				<div class="header">All The News 2</div>
 				<div class="barRight"></div>
-				<div class="barLeft"></div>
-			    <div style="float: left" id="my_menu" class="sdmenu">
-			      <div>
-			        <span>Account</span>
-			        <a href="http://tools.dynamicdrive.com/imageoptimizer/">Image Optimizer</a>
-			        <a href="http://tools.dynamicdrive.com/favicon/">FavIcon Generator</a>
-			        <a href="http://www.dynamicdrive.com/emailriddler/">Email Riddler</a>
-			        <a href="http://tools.dynamicdrive.com/password/">htaccess Password</a>
-			        <a href="http://tools.dynamicdrive.com/gradient/">Gradient Image</a>
-			        <a href="http://tools.dynamicdrive.com/button/">Button Maker</a>
-			      </div>
-			      <div>
-			        <span>Sites</span>
-			        <a href="http://www.dynamicdrive.com/recommendit/">Recommend Us</a>
-			        <a href="http://www.dynamicdrive.com/link.htm">Link to Us</a>
-			        <a href="http://www.dynamicdrive.com/resources/">Web Resources</a>
-			      </div>
-			      <div class="collapsed">
-			        <span>Ranking</span>
-			        <a href="http://www.javascriptkit.com">JavaScript Kit</a>
-			        <a href="http://www.cssdrive.com">CSS Drive</a>
-			        <a href="http://www.codingforums.com">CodingForums</a>
-			        <a href="http://www.dynamicdrive.com/style/">CSS Examples</a>
-			      </div>
-			      <div>
-			        <span>About</span>
-			        <a href="?foo=bar">Current or not</a>
-			        <a href="./">Current or not</a>
-			        <a href="index.html">Current or not</a>
-			        <a href="index.html?query">Current or not</a>
-			      </div>
-			    </div>
+				
+				
+				<div style="float: left" id="my_menu" class="sdmenu">
+				    <div>
+				      <span>Account</span>
+				        <a href="http://tools.dynamicdrive.com/imageoptimizer/">Image Optimizer</a>
+				        <a href="http://tools.dynamicdrive.com/favicon/">FavIcon Generator</a>
+				        <a href="http://www.dynamicdrive.com/emailriddler/">Email Riddler</a>
+				        <a href="http://tools.dynamicdrive.com/password/">htaccess Password</a>
+				        <a href="http://tools.dynamicdrive.com/gradient/">Gradient Image</a>
+				        <a href="http://tools.dynamicdrive.com/button/">Button Maker</a>
+				      </div>
+				      <div>
+				        <span>Sites</span>
+				        <a href="http://www.dynamicdrive.com/recommendit/">Recommend Us</a>
+				        <a href="http://www.dynamicdrive.com/link.htm">Link to Us</a>
+				        <a href="http://www.dynamicdrive.com/resources/">Web Resources</a>
+				      </div>
+				      <div class="collapsed">
+				        <span>Ranking</span>
+				        <a href="http://www.javascriptkit.com">JavaScript Kit</a>
+				        <a href="http://www.cssdrive.com">CSS Drive</a>
+				        <a href="http://www.codingforums.com">CodingForums</a>
+				        <a href="http://www.dynamicdrive.com/style/">CSS Examples</a>
+				      </div>
+				    <div>
+				        <span>About</span>
+				        <a href="?foo=bar">Current or not</a>
+				        <a href="./">Current or not</a>
+				        <a href="index.html">Current or not</a>
+				        <a href="index.html?query">Current or not</a>
+				    </div>
+				</div>
 
+				
+				<div class="content">
+					<div class="info">
+						<?php
+							include 'rss.php';
+					 		loadRSS();
+					 	?>
+					 </div>
+				</div>
+				
+				
+
+		
 	  
 
 			<!--<a href="index.html" class="b1 button">Home</a>
@@ -164,12 +206,7 @@ Paragraph
 			<a href="Contact.html" class="b1 button">Contact</a>
 			-->
 	  	
-		<div class="content">
-			<?php
-				include 'rss.php';
-			 	loadRSS();
-			 ?>
-		</div>
+		
 		
 		</body>
 	</html>

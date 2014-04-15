@@ -56,7 +56,6 @@ function loadRSS()
 	show($site, $feed, $storyLimit, $siteNum);
 }
 
-loadRSS();
 
 function rank($title, $keys)
 {
