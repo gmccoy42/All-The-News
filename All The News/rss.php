@@ -1,57 +1,62 @@
 <?php
 
-$sites = array();
-$keys = array();
-
-/********************Sites***********************************/
-array_push($sites, "http://rss.slashdot.org/Slashdot/slashdot","http://soylentnews.org/index.rss");
-//array_push($sites, );
-
-/*******************Keys************************************/
-array_push($keys, "Arduino","Linux", "Android", "Raspberry Pi");
-
-/********************Values*********************************/
-$storyLimit = 10;
-$siteNum = count($sites);
-
-$feed = array();
-$index = 0;
-
-foreach ($sites as $site)
+function loadRSS()
 {
-	$rss = new DOMDocument();
-	$rss->load($site);
-	$counter = 0;
+	$sites = array();
+	$keys = array();
 
-	foreach ($rss->getElementsByTagName('item') as $node) 
+	/********************Sites***********************************/
+	array_push($sites, "http://rss.slashdot.org/Slashdot/slashdot","http://soylentnews.org/index.rss");
+	//array_push($sites, );
+
+	/*******************Keys************************************/
+	array_push($keys, "Arduino","Linux", "Android", "Raspberry Pi");
+
+	/********************Values*********************************/
+	$storyLimit = 10;
+	$siteNum = count($sites);
+
+	$feed = array();
+	$index = 0;
+
+	foreach ($sites as $site)
 	{
-		$item = array 
-		( 
-			'title' => $node->getElementsByTagName('title')->item(0)->nodeValue,
-			'desc' => $node->getElementsByTagName('description')->item(0)->nodeValue,
-			'link' => $node->getElementsByTagName('link')->item(0)->nodeValue,
-			'date' => $node->getElementsByTagName('date')->item(0)->nodeValue,
-		);
+		$rss = new DOMDocument();
+		$rss->load($site);
+		$counter = 0;
 
-		$title = str_replace(' & ', ' &amp; ', $item['title']);
-		$r = rank($title, $keys);
-
-		$item['rank'] = $r;
-
-		array_push($feed, $item);
-
-		$counter++;
-
-		if($counter >= $storyLimit)
+		foreach ($rss->getElementsByTagName('item') as $node) 
 		{
-			break;
+			$item = array 
+			( 
+				'title' => $node->getElementsByTagName('title')->item(0)->nodeValue,
+				'desc' => $node->getElementsByTagName('description')->item(0)->nodeValue,
+				'link' => $node->getElementsByTagName('link')->item(0)->nodeValue,
+				'date' => $node->getElementsByTagName('date')->item(0)->nodeValue,
+			);
+
+			$title = str_replace(' & ', ' &amp; ', $item['title']);
+			$r = rank($title, $keys);
+
+			$item['rank'] = $r;
+
+			array_push($feed, $item);
+
+			$counter++;
+
+			if($counter >= $storyLimit)
+			{
+				break;
+			}
 		}
+
+		$index++;	
 	}
 
-	$index++;	
+	show($site, $feed, $storyLimit, $siteNum);
 }
 
-show($site, $feed, $storyLimit, $siteNum);
+loadRSS();
 
 function rank($title, $keys)
 {

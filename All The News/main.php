@@ -165,8 +165,10 @@ Paragraph
 			-->
 	  	
 		<div class="content">
-			<p>Alex Mayyasi writes that a close look at the cars outside Silicon Valley's venture capital firms reveals that the cars share a mysterious detail: they nearly all have a custom license plate frame that reads, "Member. 11-99 Foundation" which is the charitable organization that supports California Highway Patrol officers and their families in times of crisis. Donors receive one license plate as part of a $2,500 "Classic" level donation, or two as part of a bronze, silver, or gold level donation of $5,000, $10,000, or $25,000. Rumor has it, according to Mayyasi, that the license plate frames come with a lucrative return on investment. As one member of a Mercedes-Benz owners community wrote online back in 2002: "I have the ultimate speeding ticket solution. I paid $1800 for a lifetime membership into the 11-99 foundation. My only goal was to get the infamous 'get out of jail' free license plate frame." </p>
-			
+			<?php
+				include 'rss.php';
+			 	loadRSS();
+			 ?>
 		</div>
 		
 		</body>
