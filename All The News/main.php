@@ -22,6 +22,28 @@
 		myMenu.speed = 5;
 		myMenu.oneSmOnly = false;
 	};
+
+	function login(showhide)
+	{
+	  if(showhide == "show")
+	  {
+	      document.getElementById('popupbox').style.visibility="visible";
+	  }
+	  else if(showhide == "hide")
+	  {
+	      document.getElementById('popupbox').style.visibility="hidden"; 
+	  }
+	}
+
+	function closeFunction()
+	{
+		login("hide");
+	}
+
+	function openFunction()
+	{
+		login("show");
+	}
 	// ]]>
 	</script>
 
@@ -43,6 +65,23 @@
 		background-color:#B2B2B2;
 		
 	}
+
+	#popupbox
+  	{
+		margin: 0; 
+		margin-left: 40%; 
+		margin-right: 40%;
+		margin-top: 50px; 
+	    padding-top: 10px; 
+		width: 20%; 
+		height: 150px; 
+		position: absolute; 
+		background: #FBFBF0; 
+		border: solid #000000 2px; 
+		z-index: 9; 
+		font-family: arial; 
+		visibility: hidden; 
+  	}
 
 	.content
 	{
@@ -149,6 +188,20 @@ Paragraph
 </head>
 
 		<body>
+				<div id="popupbox"> 
+					<form name="Login" action="" method="post">
+						<center>Username:</center>
+						<center><input name="username" size="14" /></center>
+						<center>Password:</center>
+						<center><input name="password" type="password" size="14" /></center>
+						<br />
+						<center>
+							<input type="submit" name="submit" value="login" />
+							<button onclick="closeFunction()">Cancel</button>
+						</center>
+					</form>
+				</div> 
+
 				<div class="header">All The News 2</div>
 				<div class="barRight"></div>
 				
@@ -156,7 +209,7 @@ Paragraph
 				<div style="float: left" id="my_menu" class="sdmenu">
 				    <div>
 				      <span>Account</span>
-				        <a href="http://tools.dynamicdrive.com/imageoptimizer/">Image Optimizer</a>
+				        <a href="javascript:login('show');">Login</a>
 				        <a href="http://tools.dynamicdrive.com/favicon/">FavIcon Generator</a>
 				        <a href="http://www.dynamicdrive.com/emailriddler/">Email Riddler</a>
 				        <a href="http://tools.dynamicdrive.com/password/">htaccess Password</a>
