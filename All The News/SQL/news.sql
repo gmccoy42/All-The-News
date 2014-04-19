@@ -33,9 +33,27 @@ DROP TABLE IF EXISTS stories;
 CREATE TABLE stories
 (
 	u_id INT,
+	s_num INT auto_increment,
 	title TEXT,
 	des TEXT,
 	link TEXT,
 	s_date DATE,
+	rank INT,
+	PRIMARY KEY (s_num),
 	FOREIGN KEY (u_id) references user(u_id)	
 );
+
+DROP TRIGGER IF EXISTS repeatTrig;
+DELIMITER //
+CREATE TRIGGER repeatTrig
+BEFORE INSERT ON stories
+FOR EACH ROW
+BEGIN
+
+	IF (SELECT  COUNT(*) FROM stories WHERE title=NEW.title GROUP BY title) > 0 THEN
+		SIGNAL SQLSTATE '45000'
+						SET MESSAGE_TEXT = "Repeat Stopping";
+	END IF;
+END;
+//
+DELIMITER ;

@@ -7,7 +7,8 @@
      <?php
     	session_start();
     	$_SESSION['login']=$_COOKIE['login']; 
-    	$_SESSION['user']=$_COOKIE['user']; 
+    	$_SESSION['user']=$_COOKIE['user'];
+    	$_SESSION['u_id']=$_COOKIE['u_id']; 
 
     ?>
     <link rel="stylesheet" type="text/css" href="sdmenu/sdmenu.css" />
@@ -54,7 +55,6 @@
 
 	function logout()
 	{
-
 
 	}
 	// ]]>
@@ -228,7 +228,7 @@ Paragraph
 				        <?php } else { ?>   
 				        <a href="javascript:login('show');">Login</a> 
 				        <?php }?>
-				        <a href="http://tools.dynamicdrive.com/favicon/">FavIcon Generator</a>
+				        <a href="http://tools.dynamicdrive.com/favicon/">Nothing</a>
 				        <a href="http://www.dynamicdrive.com/emailriddler/">Email Riddler</a>
 				        <a href="http://tools.dynamicdrive.com/password/">htaccess Password</a>
 				        <a href="http://tools.dynamicdrive.com/gradient/">Gradient Image</a>
@@ -236,7 +236,12 @@ Paragraph
 				      </div>
 				      <div>
 				        <span>Sites</span>
-				        <a href="http://www.dynamicdrive.com/recommendit/">Recommend Us</a>
+				        <div>
+				        	<span>Add Sites</span>
+				        	<b>Enter RSS feed</b>
+				        	<b><input type="text" size=12></input></b>
+				        	<b><button>Enter</button></b>
+				        </div>
 				        <a href="http://www.dynamicdrive.com/link.htm">Link to Us</a>
 				        <a href="http://www.dynamicdrive.com/resources/">Web Resources</a>
 				      </div>
@@ -260,26 +265,18 @@ Paragraph
 				<div class="content">
 					<div class="info">
 						<?php
-							session_start();
 							include 'rss.php';
-					 		loadRSS();
+					 		loadRSS($_SESSION['u_id']);
 					 	?>
 					 </div>
 				</div>
 				
-				
-
-		
-	  
-
 			<!--<a href="index.html" class="b1 button">Home</a>
 			<a href="About.html" class="b1 button">About</a>
 			<a href="Ministries.html" class="b1 button">Ministries</a>
 			<a href="Contact.html" class="b1 button">Contact</a>
 			-->
 	  	
-		
-		
 		</body>
 	</html>
 </div>

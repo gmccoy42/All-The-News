@@ -1,16 +1,16 @@
 <?php
 
-function loadRSS()
+function loadRSS($uid)
 {
 	$sites = array();
 	$keys = array();
 
 	/********************Sites***********************************/
-	array_push($sites, "http://rss.slashdot.org/Slashdot/slashdot","http://soylentnews.org/index.rss");
+	array_push($sites, "http://www.reddit.com/r/technology.rss", "http://soylentnews.org/index.rss", "http://rss.slashdot.org/Slashdot/slashdot");
 	//array_push($sites, );
 
 	/*******************Keys************************************/
-	array_push($keys, "Arduino","Linux", "Android", "Raspberry Pi");
+	array_push($keys, "Arduino","Linux", "Android", "Raspberry Pi", "Google", "Arch Linux", "Debian", "Video Games", "Valve");
 
 	/********************Values*********************************/
 	$storyLimit = 10;
@@ -40,7 +40,19 @@ function loadRSS()
 
 			$item['rank'] = $r;
 
+			$link = mysqli_connect("127.0.0.1","root", "Conestoga1", "ATN_db");
+
+			if (!$link) 
+			{
+    			echo "Oh no!";
+			}
+
 			array_push($feed, $item);
+
+			$item['title'] = addslashes($item['title']);
+			$sql = "INSERT INTO stories(u_id, title, link, s_date, rank) VALUES('" . $uid . "', '" . $item['title'] . "', '" . $item['link'] . "', '" . $item['date'] . "', '" . $item['rank'] . "');";
+	
+			$result = mysqli_query($link,$sql);
 
 			$counter++;
 
@@ -53,7 +65,7 @@ function loadRSS()
 		$index++;	
 	}
 
-	show($site, $feed, $storyLimit, $siteNum);
+	show($uid, $feed, $storyLimit, $siteNum, $link);
 }
 
 
@@ -69,22 +81,28 @@ function rank($title, $keys)
 	return $rank;
 }
 
-function show($site, $feed, $storyLimit, $siteNum)
+function show($uid, $feed, $storyLimit, $siteNum, $link)
 {
 
 	$limit = $storyLimit * $siteNum;
+	$query = "SELECT * FROM stories WHERE u_id=" . $uid . " ORDER BY rank DESC;";
+	//echo $query;
+	$result = mysqli_query($link,$query);
+	$x=0;
 
-	for($x=0;$x<$limit;$x++) 
+	while($x<$limit && $row = mysqli_fetch_array($result)) 
 	{
-		$title = str_replace(' & ', ' &amp; ', $feed[$x]['title']);
-		$link = $feed[$x]['link'];
-		$description = $feed[$x]['desc'];
-		$date = date('l F d, Y', strtotime($feed[$x]['date']));
-		$rank = $feed[$x]['rank'];
-		echo '<p><strong><a href="'.$link.'" title="'.$title.'">'.$title.'</a></strong><br />';
+		$title = $row['title'];
+		$href = $row['link'];
+		$date = $row['s_date'];
+		$rank = $row['rank'];
+		
+		echo '<p><strong><a href="'.$href.'" title="'.$title.'">'.$title.'</a></strong><br />';
 		echo '<small><em>Posted on '.$date.'</em></small></p>';
 		//echo '<p>'.$description.'</p>';
 		echo '<p>'.$rank.'</p>';
+
+		$x++;
 	}
 
 }

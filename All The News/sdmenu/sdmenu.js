@@ -16,6 +16,7 @@ SDMenu.prototype.init = function() {
 		};
 	if (this.markCurrent) {
 		var links = this.menu.getElementsByTagName("a");
+		links += this.menu.getElementsByTagName("b");
 		for (var i = 0; i < links.length; i++)
 			if (links[i].href == document.location.href) {
 				links[i].className = "current";
@@ -41,6 +42,7 @@ SDMenu.prototype.toggleMenu = function(submenu) {
 SDMenu.prototype.expandMenu = function(submenu) {
 	var fullHeight = submenu.getElementsByTagName("span")[0].offsetHeight;
 	var links = submenu.getElementsByTagName("a");
+	links += submenu.getElementsByTagName("b");
 	for (var i = 0; i < links.length; i++)
 		fullHeight += links[i].offsetHeight;
 	var moveBy = Math.round(this.speed * links.length);
@@ -62,7 +64,7 @@ SDMenu.prototype.expandMenu = function(submenu) {
 };
 SDMenu.prototype.collapseMenu = function(submenu) {
 	var minHeight = submenu.getElementsByTagName("span")[0].offsetHeight;
-	var moveBy = Math.round(this.speed * submenu.getElementsByTagName("a").length);
+	var moveBy = Math.round(this.speed * (submenu.getElementsByTagName("a").length + submenu.getElementsByTagName("b").length));
 	var mainInstance = this;
 	var intId = setInterval(function() {
 		var curHeight = submenu.offsetHeight;
