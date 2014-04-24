@@ -216,7 +216,7 @@ Paragraph
 					</form>
 				</div> 
 
-				<div class="header">All The News 2</div>
+				<div class="header">All The News</div>
 				<div class="barRight"></div>
 				
 				
@@ -228,11 +228,7 @@ Paragraph
 				        <?php } else { ?>   
 				        <a href="javascript:login('show');">Login</a> 
 				        <?php }?>
-				        <a href="http://tools.dynamicdrive.com/favicon/">Nothing</a>
-				        <a href="http://www.dynamicdrive.com/emailriddler/">Email Riddler</a>
-				        <a href="http://tools.dynamicdrive.com/password/">htaccess Password</a>
-				        <a href="http://tools.dynamicdrive.com/gradient/">Gradient Image</a>
-				        <a href="http://tools.dynamicdrive.com/button/">Button Maker</a>
+				        <a href="">Account Setting -Not Yet Implemented-</a>
 				      </div>
 				      <div>
 				        <span>Sites</span>
@@ -242,22 +238,18 @@ Paragraph
 				        	<b><input type="text" size=12></input></b>
 				        	<b><button>Enter</button></b>
 				        </div>
-				        <a href="http://www.dynamicdrive.com/link.htm">Link to Us</a>
-				        <a href="http://www.dynamicdrive.com/resources/">Web Resources</a>
+				        <a href="">List of current sites here -Not Yet Implemented-</a>
+				       
 				      </div>
 				      <div class="collapsed">
 				        <span>Ranking</span>
-				        <a href="http://www.javascriptkit.com">JavaScript Kit</a>
-				        <a href="http://www.cssdrive.com">CSS Drive</a>
-				        <a href="http://www.codingforums.com">CodingForums</a>
-				        <a href="http://www.dynamicdrive.com/style/">CSS Examples</a>
+				        <a href="">Enter New Key Word -Not Yet Implemented-</a>
+				        <a href="">Modify Key Words -Not Yet Implemented-</a>
+				        <a href="">Other -Not Yet Implemented-</a>
 				      </div>
 				    <div>
 				        <span>About</span>
-				        <a href="?foo=bar">Current or not</a>
-				        <a href="./">Current or not</a>
-				        <a href="index.html">Current or not</a>
-				        <a href="index.html?query">Current or not</a>
+				        <a href="?foo=bar">-Not Yet Implemented-</a>
 				    </div>
 				</div>
 
