@@ -25,6 +25,7 @@ function loadRSS($uid)
 		$rss->load($site);
 		$counter = 0;
 
+
 		foreach ($rss->getElementsByTagName('item') as $node) 
 		{
 			$item = array 
@@ -33,8 +34,11 @@ function loadRSS($uid)
 				'desc' => $node->getElementsByTagName('description')->item(0)->nodeValue,
 				'link' => $node->getElementsByTagName('link')->item(0)->nodeValue,
 				'date' => $node->getElementsByTagName('date')->item(0)->nodeValue,
+				'pubDate' => $node->getElementsByTagName('pubDate')->item(0)->nodeValue
+
 			);
 
+			
 			$title = str_replace(' & ', ' &amp; ', $item['title']);
 			$r = rank($title, $keys);
 
@@ -47,11 +51,24 @@ function loadRSS($uid)
     			echo "Oh no!";
 			}
 
+			
+			if($item['date'] == "")
+			{
+				$item['date'] = date("Y/m/d H:i:s", strtotime($item['pubDate']));
+
+			}
+			else
+			{
+
+				$item['date'] = date("Y/m/d H:i:s", strtotime($item['date']));
+			}
+
+
+
 			array_push($feed, $item);
 
 			$item['title'] = addslashes($item['title']);
 			$sql = "INSERT INTO stories(u_id, title, link, s_date, rank) VALUES('" . $uid . "', '" . $item['title'] . "', '" . $item['link'] . "', '" . $item['date'] . "', '" . $item['rank'] . "');";
-	
 			$result = mysqli_query($link,$sql);
 
 			$counter++;
@@ -85,7 +102,7 @@ function show($uid, $feed, $storyLimit, $siteNum, $link)
 {
 
 	$limit = $storyLimit * $siteNum;
-	$query = "SELECT * FROM stories WHERE u_id=" . $uid . " ORDER BY rank DESC;";
+	$query = "SELECT * FROM stories WHERE u_id=" . $uid . " ORDER BY rank DESC, s_date DESC;";
 	//echo $query;
 	$result = mysqli_query($link,$query);
 	$x=0;

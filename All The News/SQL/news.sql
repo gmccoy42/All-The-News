@@ -37,7 +37,7 @@ CREATE TABLE stories
 	title TEXT,
 	des TEXT,
 	link TEXT,
-	s_date DATE,
+	s_date DATETIME,
 	rank INT,
 	PRIMARY KEY (s_num),
 	FOREIGN KEY (u_id) references user(u_id)	

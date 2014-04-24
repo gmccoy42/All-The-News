@@ -20,10 +20,10 @@
   	if($row['uname'] == $uname && $row['pass'] == $pass)
   	{
 
-		setcookie("user", $uname, time()+3600);
-		setcookie("pass", $pass, time()+3600);
-		setcookie("login", 1, time()+3600);
-		setcookie("u_id", $row['u_id'], time()+3600);
+		setcookie("user", $uname, time()+4840480);
+		setcookie("pass", $pass, time()+4840480);
+		setcookie("login", 1, time()+4840480);
+		setcookie("u_id", $row['u_id'], time()+4840480);
 	}
 	else
 	{
