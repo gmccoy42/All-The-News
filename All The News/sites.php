@@ -216,7 +216,7 @@ Paragraph
 					</form>
 				</div> 
 
-				<div class="header">All The News</div>
+				<div class="header"><a href="main.php"><img src="img/logo.png"></img></a></div>
 				<div class="barRight"></div>
 				
 				

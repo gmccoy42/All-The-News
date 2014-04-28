@@ -25,7 +25,20 @@ function loadRSS($uid)
 	
 
 	/*******************Keys************************************/
-	array_push($keys, "Arduino","Linux", "Android", "Raspberry Pi", "Google", "Arch Linux", "Debian", "Video Games", "Valve", "StarCraft", "Blizzard", "RTS");
+	$link = mysqli_connect("127.0.0.1","root", "Conestoga1", "ATN_db");
+
+	if (!$link) 
+	{
+		echo "Oh no!";
+	}
+						  		
+	$result = mysqli_query($link,"SELECT * FROM s_key WHERE u_id='" . $_SESSION['u_id'] . "';");  
+
+	while($row = mysqli_fetch_array($result)) 
+	{
+		array_push($keys, $row['k']);
+	}
+	
 
 	/********************Values*********************************/
 	$storyLimit = 10;
@@ -82,8 +95,12 @@ function loadRSS($uid)
 			array_push($feed, $item);
 
 			$item['title'] = addslashes($item['title']);
+			$dup = "SELECT duplicateCheck('" . $item['title'] . "');";
+			$result = mysqli_query($link,$dup);
+			//echo $dup . "<br>";
 			$sql = "INSERT INTO stories(u_id, title, link, s_date, rank) VALUES('" . $uid . "', '" . $item['title'] . "', '" . $item['link'] . "', '" . $item['date'] . "', '" . $item['rank'] . "');";
 			$result = mysqli_query($link,$sql);
+			//echo $sql . "<br>";
 
 			$counter++;
 
@@ -107,6 +124,7 @@ function rank($title, $keys)
 	foreach($keys as $key)
 	{
 		$rank += (substr_count ($title , $key) * 5);
+		//echo $rank . "      " . $title . "<br>";
 	}
 
 	return $rank;

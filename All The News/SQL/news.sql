@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS s_keys;
 CREATE TABLE s_key
 (
 	u_id INT,
-	s_key VARCHAR(100),
+	k VARCHAR(100),
 	FOREIGN KEY (u_id) references user(u_id)
 );
 
@@ -53,9 +53,8 @@ BEGIN
 	SET NEW.rank=(dateRank(NEW.s_date, NEW.rank));
 
 	IF (SELECT  COUNT(*) FROM stories WHERE title=NEW.title GROUP BY title) > 0 THEN
-		DELETE FROM stories WHERE s_num=NEW.s_num;
-		/*SIGNAL SQLSTATE '45000'
-						SET MESSAGE_TEXT = "Repeat Stopping";*/
+		SIGNAL SQLSTATE '45000'
+						SET MESSAGE_TEXT = "Repeat Stopping";
 	END IF;
 END;
 //
@@ -70,8 +69,25 @@ CREATE FUNCTION dateRank
 )
 RETURNS INT
 BEGIN
-	SET rank = rank + ((TIMESTAMPDIFF(hour, NOW(), pubDate)/3));
-	RETURN rank;
+	SET @r = rank + ((TIMESTAMPDIFF(hour, NOW(), pubDate)/3));
+	RETURN @r;
+END;
+//
+DELIMITER ;
+
+DROP FUNCTION IF EXISTS duplicateCheck;
+DELIMITER //
+CREATE FUNCTION duplicateCheck
+(
+	t TEXT
+)
+RETURNS INT
+BEGIN
+	IF (SELECT  COUNT(*) FROM stories WHERE title=t GROUP BY title) > 0 THEN
+		DELETE FROM stories WHERE title=t;
+	END IF;
+
+	RETURN 1;
 END;
 //
 DELIMITER ;

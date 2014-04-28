@@ -55,7 +55,7 @@
 
 	function logout()
 	{
-		
+
 	}
 	// ]]>
 	</script>
@@ -239,7 +239,7 @@ Paragraph
 				      </div>
 				      <div class="collapsed">
 				        <span>Ranking</span>
-				        <a href="Keywords.php">Enter New Key Word</a>
+				        <a href="">Enter New Key Word -Not Yet Implemented-</a>
 				        <a href="">Modify Key Words -Not Yet Implemented-</a>
 				        <a href="">Other -Not Yet Implemented-</a>
 				      </div>
@@ -252,10 +252,42 @@ Paragraph
 				
 				<div class="content">
 					<div class="info">
-						<?php
-							include 'rss.php';
-					 		loadRSS($_SESSION['u_id']);
-					 	?>
+						
+					 </div>
+				</div>
+
+				
+				<div class="content">
+					<div class="info">
+						<p>Add Site</p>
+						<form name="newKey" action="siteUpdate.php" method="post">
+							<input type='text' name='key'/>
+							<input type="submit" name="submit" value="enter" />
+						</form>
+						<br>
+
+						<p>Current KeyWords</p>
+
+						<?php 
+							$link = mysqli_connect("127.0.0.1","root", "Conestoga1", "ATN_db");
+
+							if (!$link) 
+							{
+						    	echo "Oh no!";
+							}
+						  		
+						  	$result = mysqli_query($link,"SELECT * FROM s_key WHERE u_id='" . $_SESSION['u_id'] . "';"); 
+
+						  	while($row = mysqli_fetch_array($result)) 
+						  	{
+
+						  		$k = $row['k'];
+						  		echo '<p>'.$k.'</p>';
+						  	}
+	
+						?>
+						
+						
 					 </div>
 				</div>
 				
