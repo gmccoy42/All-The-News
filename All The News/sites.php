@@ -55,7 +55,7 @@
 
 	function logout()
 	{
-		
+
 	}
 	// ]]>
 	</script>
@@ -252,10 +252,42 @@ Paragraph
 				
 				<div class="content">
 					<div class="info">
-						<?php
-							include 'rss.php';
-					 		loadRSS($_SESSION['u_id']);
-					 	?>
+						
+					 </div>
+				</div>
+
+				
+				<div class="content">
+					<div class="info">
+						<p>Add Site</p>
+						<form name="newSite" action="siteUpdate.php" method="post">
+							<input type='text' name='site'/>
+							<input type="submit" name="submit" value="enter" />
+						</form>
+						<br>
+
+						<p>Current Sites</p>
+
+						<?php 
+							$link = mysqli_connect("127.0.0.1","root", "Conestoga1", "ATN_db");
+
+							if (!$link) 
+							{
+						    	echo "Oh no!";
+							}
+						  		
+						  	$result = mysqli_query($link,"SELECT * FROM site WHERE u_id='" . $_SESSION['u_id'] . "';"); 
+
+						  	while($row = mysqli_fetch_array($result)) 
+						  	{
+
+						  		$url = $row['url'];
+						  		echo '<p>'.$url.'</p>';
+						  	}
+	
+						?>
+						
+						
 					 </div>
 				</div>
 				

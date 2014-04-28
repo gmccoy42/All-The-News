@@ -55,7 +55,7 @@
 
 	function logout()
 	{
-		
+
 	}
 	// ]]>
 	</script>
@@ -252,10 +252,18 @@ Paragraph
 				
 				<div class="content">
 					<div class="info">
-						<?php
-							include 'rss.php';
-					 		loadRSS($_SESSION['u_id']);
-					 	?>
+						
+					 </div>
+				</div>
+
+				
+				<div class="content">
+					<div class="info">
+						<p>Change Username</p>
+						<input type='text'/>
+						<button>Enter</button>
+
+						
 					 </div>
 				</div>
 				

@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 function loadRSS($uid)
 {
@@ -6,11 +7,25 @@ function loadRSS($uid)
 	$keys = array();
 
 	/********************Sites***********************************/
-	array_push($sites, "http://www.reddit.com/r/technology.rss", "http://soylentnews.org/index.rss", "http://rss.slashdot.org/Slashdot/slashdot");
-	//array_push($sites, );
+	$link = mysqli_connect("127.0.0.1","root", "Conestoga1", "ATN_db");
+
+	if (!$link) 
+	{
+		echo "Oh no!";
+	}
+						  		
+	$result = mysqli_query($link,"SELECT * FROM site WHERE u_id='" . $_SESSION['u_id'] . "';"); 
+
+	while($row = mysqli_fetch_array($result)) 
+	{
+
+		$url = $row['url'];
+		array_push($sites, $row['url']);
+	}
+	
 
 	/*******************Keys************************************/
-	array_push($keys, "Arduino","Linux", "Android", "Raspberry Pi", "Google", "Arch Linux", "Debian", "Video Games", "Valve");
+	array_push($keys, "Arduino","Linux", "Android", "Raspberry Pi", "Google", "Arch Linux", "Debian", "Video Games", "Valve", "StarCraft", "Blizzard", "RTS");
 
 	/********************Values*********************************/
 	$storyLimit = 10;
@@ -28,6 +43,7 @@ function loadRSS($uid)
 
 		foreach ($rss->getElementsByTagName('item') as $node) 
 		{
+			// Create an array to store RSS info in
 			$item = array 
 			( 
 				'title' => $node->getElementsByTagName('title')->item(0)->nodeValue,
@@ -59,11 +75,9 @@ function loadRSS($uid)
 			}
 			else
 			{
-
+				
 				$item['date'] = date("Y/m/d H:i:s", strtotime($item['date']));
 			}
-
-
 
 			array_push($feed, $item);
 
@@ -92,7 +106,7 @@ function rank($title, $keys)
 
 	foreach($keys as $key)
 	{
-		$rank += substr_count ($title , $key);
+		$rank += (substr_count ($title , $key) * 5);
 	}
 
 	return $rank;
