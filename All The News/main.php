@@ -9,7 +9,7 @@
     	$_SESSION['login']=$_COOKIE['login']; 
     	$_SESSION['user']=$_COOKIE['user'];
     	$_SESSION['u_id']=$_COOKIE['u_id']; 
-
+    	$timezone = $_SESSION['time'];
     ?>
     <link rel="stylesheet" type="text/css" href="sdmenu/sdmenu.css" />
    
@@ -20,9 +20,32 @@
 		* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
 		***********************************************/
 	</script>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 	<script type="text/javascript">
 	// <![CDATA[
 	var myMenu;
+
+	$(document).ready(function() 
+	{
+        if("<?php echo $timezone; ?>".length==0)
+        {
+            var visitortime = new Date();
+            var visitortimezone = -visitortime.getTimezoneOffset()/60;
+            $.ajax
+            ({
+                type: "GET",
+                url: "timezone.php",
+                data: 'time='+ visitortimezone,
+                success: function()
+                {
+                    location.reload();
+                }
+            });
+        }
+    });
+
 	window.onload = function() 
 	{
 		myMenu = new SDMenu("my_menu");

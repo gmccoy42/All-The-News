@@ -1,10 +1,13 @@
 <?php
 session_start();
 
+
 function loadRSS($uid)
 {
+	$timezone = $_SESSION['time'];
 	$sites = array();
 	$keys = array();
+	$val = array();
 
 	/********************Sites***********************************/
 	$link = mysqli_connect("127.0.0.1","root", "Conestoga1", "ATN_db");
@@ -37,6 +40,7 @@ function loadRSS($uid)
 	while($row = mysqli_fetch_array($result)) 
 	{
 		array_push($keys, $row['k']);
+		array_push($val, $row['val']);
 	}
 	
 
@@ -44,7 +48,6 @@ function loadRSS($uid)
 	$storyLimit = 10;
 	$siteNum = count($sites);
 
-	$feed = array();
 	$index = 0;
 
 	foreach ($sites as $site)
@@ -69,7 +72,7 @@ function loadRSS($uid)
 
 			
 			$title = str_replace(' & ', ' &amp; ', $item['title']);
-			$r = rank($title, $keys);
+			$r = rank($title, $keys, $val);
 
 			$item['rank'] = $r;
 
@@ -83,16 +86,18 @@ function loadRSS($uid)
 			
 			if($item['date'] == "")
 			{
-				$item['date'] = date("Y/m/d H:i:s", strtotime($item['pubDate']));
 
+				$item['date'] = date("Y/m/d H:i:s", strtotime($item['pubDate']));
+				//$item['date'] = date("Y/m/d H:i:s", strtotime($timezone . ' hours', $item['date']));
+				//echo $timezone . "<br>";
 			}
 			else
 			{
 				
 				$item['date'] = date("Y/m/d H:i:s", strtotime($item['date']));
+				//$item['date'] = date("Y/m/d H:i:s", strtotime($timezone . ' hours', $item['date']));
 			}
 
-			array_push($feed, $item);
 
 			$item['title'] = addslashes($item['title']);
 			$dup = "SELECT duplicateCheck('" . $item['title'] . "');";
@@ -117,14 +122,22 @@ function loadRSS($uid)
 }
 
 
-function rank($title, $keys)
+function rank($title, $keys, $val)
 {
 	$rank = 0;
+	$count = 0;
 
 	foreach($keys as $key)
 	{
-		$rank += (substr_count ($title , $key) * 5);
+		$rank += (substr_count ($title , $key) * $val[$count]);
+
+		if(substr_count ($title , $key) > 1)
+		{
+			//Get keywords and tag it
+		}
 		//echo $rank . "      " . $title . "<br>";
+
+		$count++;
 	}
 
 	return $rank;

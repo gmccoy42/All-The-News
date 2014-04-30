@@ -239,7 +239,7 @@ Paragraph
 				      </div>
 				      <div class="collapsed">
 				        <span>Ranking</span>
-				        <a href="">Enter New Key Word -Not Yet Implemented-</a>
+				        <a href="Keywords.php">Enter New Key Word</a>
 				        <a href="">Modify Key Words -Not Yet Implemented-</a>
 				        <a href="">Other -Not Yet Implemented-</a>
 				      </div>

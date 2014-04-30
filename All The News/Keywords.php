@@ -10,6 +10,7 @@
     	$_SESSION['user']=$_COOKIE['user'];
     	$_SESSION['u_id']=$_COOKIE['u_id']; 
 
+
     ?>
     <link rel="stylesheet" type="text/css" href="sdmenu/sdmenu.css" />
    
@@ -23,6 +24,7 @@
 	<script type="text/javascript">
 	// <![CDATA[
 	var myMenu;
+
 	window.onload = function() 
 	{
 		myMenu = new SDMenu("my_menu");
@@ -55,8 +57,9 @@
 
 	function logout()
 	{
-
+		//Kill cookies here
 	}
+
 	// ]]>
 	</script>
 
@@ -239,7 +242,7 @@ Paragraph
 				      </div>
 				      <div class="collapsed">
 				        <span>Ranking</span>
-				        <a href="">Enter New Key Word -Not Yet Implemented-</a>
+				        <a href="Keywords.php">Enter New Key Word</a>
 				        <a href="">Modify Key Words -Not Yet Implemented-</a>
 				        <a href="">Other -Not Yet Implemented-</a>
 				      </div>
@@ -278,12 +281,25 @@ Paragraph
 						  		
 						  	$result = mysqli_query($link,"SELECT * FROM s_key WHERE u_id='" . $_SESSION['u_id'] . "';"); 
 
+						  	//I should turn this into a form that can be submited to siteUpdate and add a function there that checks if a certain varible is set
+
+						  	echo "<form name='KeyForm' action='siteUpdate.php' method='post'>";
+						  	echo "<table>";
+
 						  	while($row = mysqli_fetch_array($result)) 
 						  	{
-
+						  		echo "<tr>";
 						  		$k = $row['k'];
-						  		echo '<p>'.$k.'</p>';
+						  		echo "	<td>".$k."</td>";
+						  		$k2 = str_replace(" ","", $k);
+						  		echo "<td>&nbsp<input type='text' size='5' value='" . $row['val'] . "' name='" . $k2 . "'/></td>";
+						  		echo "</tr>";
 						  	}
+ 	
+						  	echo "</table>";
+						  	echo "<input type='submit' name='submit' value='Update' />";
+						  	echo "</form>"
+						  	
 	
 						?>
 						
