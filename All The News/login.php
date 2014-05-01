@@ -24,12 +24,13 @@
 		setcookie("pass", $pass, time()+4840480);
 		setcookie("login", 1, time()+4840480);
 		setcookie("u_id", $row['u_id'], time()+4840480);
+		header('Location: main.php');
 	}
 	else
 	{
 		echo "Go away!";
 	}
 
-	header('Location: main.php');
+	
 
 ?>
