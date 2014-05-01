@@ -9,7 +9,6 @@
     	$_SESSION['login']=$_COOKIE['login']; 
     	$_SESSION['user']=$_COOKIE['user'];
     	$_SESSION['u_id']=$_COOKIE['u_id']; 
-    	$timezone = $_SESSION['time'];
     ?>
     <link rel="stylesheet" type="text/css" href="sdmenu/sdmenu.css" />
    
@@ -23,207 +22,16 @@
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-	<script type="text/javascript">
-	// <![CDATA[
-	var myMenu;
-
-	$(document).ready(function() 
-	{
-        if("<?php echo $timezone; ?>".length==0)
-        {
-            var visitortime = new Date();
-            var visitortimezone = -visitortime.getTimezoneOffset()/60;
-            $.ajax
-            ({
-                type: "GET",
-                url: "timezone.php",
-                data: 'time='+ visitortimezone,
-                success: function()
-                {
-                    location.reload();
-                }
-            });
-        }
-    });
-
-	window.onload = function() 
-	{
-		myMenu = new SDMenu("my_menu");
-		myMenu.init();
-		myMenu.speed = 5;
-		myMenu.oneSmOnly = false;
-	};
-
-	function login(showhide)
-	{
-	  if(showhide == "show")
-	  {
-	      document.getElementById('popupbox').style.visibility="visible";
-	  }
-	  else if(showhide == "hide")
-	  {
-	      document.getElementById('popupbox').style.visibility="hidden"; 
-	  }
-	}
-
-	function closeFunction()
-	{
-		login("hide");
-	}
-
-	function openFunction()
-	{
-		login("show");
-	}
-
-	function logout()
-	{
-		
-	}
-	// ]]>
+	<script type="text/javascript" src="ATN.js">
 	</script>
 
-    <style type="text/css" media="screen">
+    <link rel="stylesheet" type="text/css" href="ATN.css" />
 
-    html
-    {
-    	
-
-    }
-
-	body
-	{
-		/*background-image:url('Religion.jpg');                               Picture instead of just colour              */
-		background-repeat:no-repeat;
-		background-attachment:absolute;                                       /* Whole Screen */
-		background-size:100% 100%;
-		background-position:center;
-		background-color:#B2B2B2;
-		
-	}
-
-	#popupbox
-  	{
-		margin: 0; 
-		margin-left: 40%; 
-		margin-right: 40%;
-		margin-top: 50px; 
-	    padding-top: 10px; 
-		width: 20%; 
-		height: 150px; 
-		position: absolute; 
-		background: #FBFBF0; 
-		border: solid #000000 2px; 
-		z-index: 9; 
-		font-family: arial; 
-		visibility: hidden; 
-  	}
-
-	.content
-	{
-	  /* margin-left: 200px;	 */
-	                                                                   /* Center's it */
-	   position: relative;
-
-	   left: 175px;
-	   width:90%;                                                        /* smaller content section*/
-	   background-color:white;
-	   height: 100%;
-	   min-width: 500px;
-	   padding-left: 10px;
-
-	   z-index: -1;
-    }
-
-    .info
-	{
-	  /* margin-left: 200px;	 */
-	                                                                   /* Center's it */
-	   position: absolute;
-
-	   left: 50px;
-	   width:90%;                                                        /* smaller content section*/
-	   height: 100%;
-	   min-width: 500px;
-	   padding-left: 10px;
-	   background-color:white;
-
-	   z-index: 10;
-    }
-
-     .barLeft
-	{
-		
-		position: absolute;
-		left: 0px;
-		top: 0px;
-		bottom: 0px;
-		width: 150px;
-		
-		height: 100%;
-		min-width: 150px;
-		background-color: red; 
-
-		z-index: 10;
-	}
-
-    .barRight
-	{
-		margin-left: 96%;
-		float: right;
-		position: absolute;
-		width: 4%;
-		height: 100%;
-		min-width: 10px;
-		/*background-color:red;*/
-	}
-
-/*******************************************************************************************************************************
-Header
-********************************************************************************************************************************/
-.header
- {
-	 margin: 0 auto;                         /* Centers header image*/
-	 display:block;                           /* needed in order to modify maragins for image.*/
-	 height:75px;
-	 width:100%;
-	 z-index:-1;                                  /* moves behind other things */
-}
-/************************************************************************************************************************************************************************************************
-Paragraph
-**************************************************************************************************************************************************************************************************/
-
-    .paragraph
-    {
-    	margin: 0 auto;														/* Center's it */
-	    width:400px;                                                        /* smaller content section*/
-	    background-color:white;
-	    position: relative;
-	    height: 740px;
-	    top: -200px;
-	    left: 0px;
-	    padding-right: 0px;
-	   z-index: 1;
-    }
-
-	.p1
-	{
-		font-size: 25px;
-		text-decoration: underline;
-		text-align: center;
-		padding-right: 60px;
-	}
-	 html, body
-	 {
-	 	margin: 0;
-	 	padding 0;
-     }
-
-}
-    </style>
 </head>
 
 		<body>
+
+				<!--#echo var="DATE_LOCAL" -->
 				 
 				<div id="popupbox"> 
 					<form name="Login" action="login.php" method="post">
@@ -234,6 +42,22 @@ Paragraph
 						<br />
 						<center>
 							<input type="submit" name="submit" value="login" />
+							<button onclick="closeFunction()">Cancel</button>
+						</center>
+					</form>
+				</div> 
+
+				<div id="popupbox"> 
+					<form name="reg" action="Register.php" method="post">
+						<center>Username:</center>
+						<center><input name="username" size="14" /></center>
+						<center>Password:</center>
+						<center><input name="password" type="password" size="14" /></center>
+						<center>Confirm Password:</center>
+						<center><input name="passwordC" type="password" size="14" /></center>
+						<br />
+						<center>
+							<button onclick="passCheck()">Register</button>
 							<button onclick="closeFunction()">Cancel</button>
 						</center>
 					</form>
@@ -250,7 +74,8 @@ Paragraph
 				        	<a href="javascript:logout();">Logout</a>
 				        <?php } else { ?>
 				        <span>Account</span> 
-				        	<a href="javascript:login('show');">Login</a> 
+				        	<a href="javascript:regShow();">Login</a> 
+				        	<a href="javascript:login('show');">Register</a> 
 				        <?php }?>
 				        <a href="">Account Setting -Not Yet Implemented-</a>
 				      </div>
@@ -260,7 +85,7 @@ Paragraph
 				        <a href="">List of current sites here -Not Yet Implemented-</a>
 				       
 				      </div>
-				      <div class="collapsed">
+				      <div>
 				        <span>Ranking</span>
 				        <a href="Keywords.php">Enter New Key Word</a>
 				        <a href="">Modify Key Words -Not Yet Implemented-</a>

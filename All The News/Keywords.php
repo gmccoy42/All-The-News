@@ -21,186 +21,12 @@
 		* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
 		***********************************************/
 	</script>
-	<script type="text/javascript">
-	// <![CDATA[
-	var myMenu;
 
-	window.onload = function() 
-	{
-		myMenu = new SDMenu("my_menu");
-		myMenu.init();
-		myMenu.speed = 5;
-		myMenu.oneSmOnly = false;
-	};
-
-	function login(showhide)
-	{
-	  if(showhide == "show")
-	  {
-	      document.getElementById('popupbox').style.visibility="visible";
-	  }
-	  else if(showhide == "hide")
-	  {
-	      document.getElementById('popupbox').style.visibility="hidden"; 
-	  }
-	}
-
-	function closeFunction()
-	{
-		login("hide");
-	}
-
-	function openFunction()
-	{
-		login("show");
-	}
-
-	function logout()
-	{
-		//Kill cookies here
-	}
-
-	// ]]>
+	<script type="text/javascript" src="ATN.js">
 	</script>
 
-    <style type="text/css" media="screen">
-
-    html
-    {
-    	
-
-    }
-
-	body
-	{
-		/*background-image:url('Religion.jpg');                               Picture instead of just colour              */
-		background-repeat:no-repeat;
-		background-attachment:absolute;                                       /* Whole Screen */
-		background-size:100% 100%;
-		background-position:center;
-		background-color:#B2B2B2;
-		
-	}
-
-	#popupbox
-  	{
-		margin: 0; 
-		margin-left: 40%; 
-		margin-right: 40%;
-		margin-top: 50px; 
-	    padding-top: 10px; 
-		width: 20%; 
-		height: 150px; 
-		position: absolute; 
-		background: #FBFBF0; 
-		border: solid #000000 2px; 
-		z-index: 9; 
-		font-family: arial; 
-		visibility: hidden; 
-  	}
-
-	.content
-	{
-	  /* margin-left: 200px;	 */
-	                                                                   /* Center's it */
-	   position: relative;
-
-	   left: 175px;
-	   width:90%;                                                        /* smaller content section*/
-	   background-color:white;
-	   height: 100%;
-	   min-width: 500px;
-	   padding-left: 10px;
-
-	   z-index: -1;
-    }
-
-    .info
-	{
-	  /* margin-left: 200px;	 */
-	                                                                   /* Center's it */
-	   position: absolute;
-
-	   left: 50px;
-	   width:90%;                                                        /* smaller content section*/
-	   height: 100%;
-	   min-width: 500px;
-	   padding-left: 10px;
-	   background-color:white;
-
-	   z-index: 10;
-    }
-
-     .barLeft
-	{
-		
-		position: absolute;
-		left: 0px;
-		top: 0px;
-		bottom: 0px;
-		width: 150px;
-		
-		height: 100%;
-		min-width: 150px;
-		background-color: red; 
-
-		z-index: 10;
-	}
-
-    .barRight
-	{
-		margin-left: 96%;
-		float: right;
-		position: absolute;
-		width: 4%;
-		height: 100%;
-		min-width: 10px;
-		/*background-color:red;*/
-	}
-
-/*******************************************************************************************************************************
-Header
-********************************************************************************************************************************/
-.header
- {
-	 margin: 0 auto;                         /* Centers header image*/
-	 display:block;                           /* needed in order to modify maragins for image.*/
-	 height:75px;
-	 width:100%;
-	 z-index:-1;                                  /* moves behind other things */
-}
-/************************************************************************************************************************************************************************************************
-Paragraph
-**************************************************************************************************************************************************************************************************/
-
-    .paragraph
-    {
-    	margin: 0 auto;														/* Center's it */
-	    width:400px;                                                        /* smaller content section*/
-	    background-color:white;
-	    position: relative;
-	    height: 740px;
-	    top: -200px;
-	    left: 0px;
-	    padding-right: 0px;
-	   z-index: 1;
-    }
-
-	.p1
-	{
-		font-size: 25px;
-		text-decoration: underline;
-		text-align: center;
-		padding-right: 60px;
-	}
-	 html, body
-	 {
-	 	margin: 0;
-	 	padding 0;
-     }
-
-}
-    </style>
+    <link rel="stylesheet" type="text/css" href="ATN.css" />
+   
 </head>
 
 		<body>
@@ -240,7 +66,7 @@ Paragraph
 				        <a href="">List of current sites here -Not Yet Implemented-</a>
 				       
 				      </div>
-				      <div class="collapsed">
+				      <div>
 				        <span>Ranking</span>
 				        <a href="Keywords.php">Enter New Key Word</a>
 				        <a href="">Modify Key Words -Not Yet Implemented-</a>
@@ -262,7 +88,7 @@ Paragraph
 				
 				<div class="content">
 					<div class="info">
-						<p>Add Site</p>
+						<p>Add Keyword</p>
 						<form name="newKey" action="siteUpdate.php" method="post">
 							<input type='text' name='key'/>
 							<input type="submit" name="submit" value="enter" />
