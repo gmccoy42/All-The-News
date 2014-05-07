@@ -45,6 +45,23 @@
 					</form>
 				</div> 
 
+
+				<div id="regbox"> 
+					<form name="reg" action="Register.php" method="post">
+						<center>Username:</center>
+						<center><input name="username" size="14" /></center>
+						<center>Password:</center>
+						<center><input name="password" type="password" size="14" /></center>
+						<center>Confirm Password:</center>
+						<center><input name="passwordC" type="password" size="14" /></center>
+						<br />
+						<center>
+							<button onclick="passCheck()">Register</button>
+							<button onclick="closeFunction()">Cancel</button>
+						</center>
+					</form>
+				</div> 
+
 				<div class="header"><a href="main.php"><img src="img/logo.png"></img></a></div>
 				<div class="barRight"></div>
 				
@@ -57,6 +74,7 @@
 				        <?php } else { ?>
 				        <span>Account</span> 
 				        	<a href="javascript:login('show');">Login</a> 
+				        	<a href="javascript:regShow();">Register</a> 
 				        <?php }?>
 				        <a href="">Account Setting -Not Yet Implemented-</a>
 				      </div>

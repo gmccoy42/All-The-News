@@ -1,6 +1,5 @@
 // <![CDATA[
 	var myMenu;
-
 	window.onload = function() 
 	{
 		myMenu = new SDMenu("my_menu");
@@ -56,6 +55,7 @@
 
     function delete_cookie(name) 
     {
+    	//Doesn't seem to work
     	document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 	}
 	// ]]>

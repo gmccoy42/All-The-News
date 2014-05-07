@@ -36,18 +36,18 @@
 				<div id="popupbox"> 
 					<form name="Login" action="login.php" method="post">
 						<center>Username:</center>
-						<center><input name="username" size="14" /></center>
+						<center><input name="username" size="14" id="usernameL" /></center>
 						<center>Password:</center>
-						<center><input name="password" type="password" size="14" /></center>
+						<center><input name="password" type="password" size="14" id="passwordL" /></center>
 						<br />
 						<center>
 							<input type="submit" name="submit" value="login" />
-							<button onclick="closeFunction()">Cancel</button>
+							<button type="button" onclick="closeFunction()">Cancel</button>
 						</center>
 					</form>
 				</div> 
 
-				<div id="popupbox"> 
+				<div id="regbox"> 
 					<form name="reg" action="Register.php" method="post">
 						<center>Username:</center>
 						<center><input name="username" size="14" /></center>
@@ -57,8 +57,8 @@
 						<center><input name="passwordC" type="password" size="14" /></center>
 						<br />
 						<center>
-							<button onclick="passCheck()">Register</button>
-							<button onclick="closeFunction()">Cancel</button>
+							<button type="button" onclick="passCheck()">Register</button>
+							<button type="button" onclick="closeFunction()">Cancel</button>
 						</center>
 					</form>
 				</div> 
@@ -74,8 +74,8 @@
 				        	<a href="javascript:logout();">Logout</a>
 				        <?php } else { ?>
 				        <span>Account</span> 
-				        	<a href="javascript:regShow();">Login</a> 
-				        	<a href="javascript:login('show');">Register</a> 
+				        	<a href="javascript:login('show');">Login</a> 
+				        	<a href="javascript:regShow();">Register</a> 
 				        <?php }?>
 				        <a href="">Account Setting -Not Yet Implemented-</a>
 				      </div>

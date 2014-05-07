@@ -71,7 +71,8 @@ CREATE FUNCTION dateRank
 RETURNS INT
 BEGIN
 	IF (TIMESTAMPDIFF(day, UTC_TIMESTAMP(), pubDate) >= 1) THEN
-		RETURN -12;
+		SET @r = rank + ((TIMESTAMPDIFF(hour, UTC_TIMESTAMP(), pubDate)*12));
+		RETURN @r;
 	END IF;
 
 	SET @r = rank + ((TIMESTAMPDIFF(hour, UTC_TIMESTAMP(), pubDate)/2));

@@ -32,6 +32,23 @@
 		visibility: hidden; 
   	}
 
+  	#regbox
+  	{
+		margin: 0; 
+		margin-left: 40%; 
+		margin-right: 40%;
+		margin-top: 50px; 
+	    padding-top: 10px; 
+		width: 20%; 
+		height: 180px; 
+		position: absolute; 
+		background: #FBFBF0; 
+		border: solid #000000 2px; 
+		z-index: 9; 
+		font-family: arial; 
+		visibility: hidden; 
+  	}
+
 	.content
 	{
 	  /* margin-left: 200px;	 */
@@ -127,7 +144,7 @@ Paragraph
 		padding-right: 60px;
 	}
 	 html, body
-	 {
+	 {+
 	 	margin: 0;
 	 	padding 0;
      }

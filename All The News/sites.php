@@ -71,7 +71,7 @@
 				        <?php } else { ?>
 				        <span>Account</span> 
 				        	<a href="javascript:login('show');">Login</a> 
-				        	<a href="javascript:login('show');">Register</a> 
+				        	<a href="javascript:regShow();">Register</a> 
 				        <?php }?>
 				        <a href="">Account Setting -Not Yet Implemented-</a>
 				      </div>
