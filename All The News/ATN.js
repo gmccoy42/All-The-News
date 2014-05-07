@@ -23,6 +23,7 @@
 
 	function closeFunction()
 	{
+		document.getElementById('problem').style.visibility="hidden";
 		login("hide");
 	}
 
@@ -47,10 +48,22 @@
 
 	function passCheck()
     {
-    	var pass1 = document.getElementById('password').value;
-    	var pass2 = document.getElementById('passwordC').value;
+    	var pass1 = document.getElementById('p1').value;
+    	var pass2 = document.getElementById('p2').value;
 
-    	alert(pass1);
+    	if(pass1.localeCompare(pass2) == 0)
+    	{
+    		document.getElementById('problem').style.visibility="hidden";
+    		var form = document.getElementById('reg');
+
+    		form.submit();
+    		alert("still alive!");
+    	}
+    	else
+    	{
+    		document.getElementById('problem').style.visibility="visible";
+    	}
+    	
     }
 
     function delete_cookie(name) 

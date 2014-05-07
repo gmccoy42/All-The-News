@@ -48,13 +48,14 @@
 				</div> 
 
 				<div id="regbox"> 
-					<form name="reg" action="Register.php" method="post">
+					<form name="reg" id='reg' action="siteUpdate.php" method="post">
 						<center>Username:</center>
 						<center><input name="username" size="14" /></center>
 						<center>Password:</center>
-						<center><input name="password" type="password" size="14" /></center>
+						<center><input name="password" type="password" id='p1' size="14" /></center>
 						<center>Confirm Password:</center>
-						<center><input name="passwordC" type="password" size="14" /></center>
+						<center><input name="passwordC" type="password" id='p2' size="14" /></center>
+						<div id="problem"><center>Password Mismatch</center></div>
 						<br />
 						<center>
 							<button type="button" onclick="passCheck()">Register</button>

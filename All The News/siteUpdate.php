@@ -14,6 +14,14 @@
 		$nkey = $_POST['key'];
 		keyUp($uid, $nkey);
 	}
+	else if(isset($_POST['username']))
+	{
+		$user = $_POST['username'];
+		$pass = $_POST['password'];
+
+		Register($user, $pass);
+
+	}
 	else
 	{
 		$link = mysqli_connect("127.0.0.1","root", "Conestoga1", "ATN_db");
@@ -84,6 +92,22 @@
 		echo $sql . "<br>";
 		$result = mysqli_query($link, $sql);
 		//echo $sql . "<br>";
+
+	}
+
+	function Register($user, $pass)
+	{
+		$link = mysqli_connect("127.0.0.1","root", "Conestoga1", "ATN_db");
+
+		if (!$link) 
+		{
+	    	echo "Oh no!";
+		}
+
+		$sql = "INSERT INTO user(uname, pass) VALUES('" . $user . "', '" . $pass . "');";
+		$result = mysqli_query($link, $sql);
+
+		header('Location: main.php');
 
 	}
 

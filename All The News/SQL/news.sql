@@ -25,7 +25,7 @@ CREATE TABLE site
 DROP TABLE IF EXISTS s_keys;
 CREATE TABLE s_key
 (
-	u_id INT,
+	u_id INT ,
 	k VARCHAR(100),
 	val INT,
 	FOREIGN KEY (u_id) references user(u_id)
