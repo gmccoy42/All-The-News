@@ -99,3 +99,38 @@ END;
 //
 DELIMITER ;
 
+
+DROP EVENT IF EXISTS rankUpdate;
+DELIMITER //
+CREATE EVENT rankUpdate
+ ON SCHEDULE EVERY 1 HOUR STARTS Now()
+ DO SELECT ATN_Update();
+//
+DELIMITER ;
+
+DROP FUNCTION IF EXISTS ATN_Update;
+DELIMITER //
+CREATE FUNCTION ATN_Update
+(
+
+)
+RETURNS INT
+BEGIN
+	/*DECLARE count INT DEFAULT (SELECT Count(*) FROM stories);*/
+	SET @count := (SELECT Count(*) FROM stories);
+
+	WHILE @count > 0 DO
+		SET @r := (SELECT rank FROM stories WHERE s_num=count);
+		SET @d := (SELECT s_date FROM stories WHERE s_num=count);
+
+		UPDATE stories SET rank=dateRank(@r, @d) WHERE s_num=count;
+
+		SET @count := count - 1;
+	END WHILE;
+
+	RETURN 1;
+END;
+//
+DELIMITER ;
+
+

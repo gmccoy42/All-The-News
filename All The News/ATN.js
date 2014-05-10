@@ -57,7 +57,6 @@
     		var form = document.getElementById('reg');
 
     		form.submit();
-    		alert("still alive!");
     	}
     	else
     	{
