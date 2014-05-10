@@ -57,7 +57,7 @@
 				        <span>Account</span> 
 				        	<a href="javascript:login('show');">Login</a> 
 				        <?php }?>
-				        <a href="">Account Setting -Not Yet Implemented-</a>
+				        <a href="account.php">Account Setting</a>
 				      </div>
 				      <div>
 				        <span>Sites</span>
@@ -87,6 +87,9 @@
 				
 				<div class="content">
 					<div class="info">
+						<br>
+						<h2><?php echo $_SESSION['user'] ?>'s Account</h2>
+						<br>
 						<p>Change Username</p>
 						<input type='text'/>
 						<button>Enter</button>

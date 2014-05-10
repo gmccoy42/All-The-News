@@ -1,4 +1,4 @@
-<?php
+0<?php
 	
 	setcookie("user", 0, time());
 	setcookie("pass", 0, time());

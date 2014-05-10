@@ -76,7 +76,7 @@
 				        	<a href="javascript:login('show');">Login</a> 
 				        	<a href="javascript:regShow();">Register</a> 
 				        <?php }?>
-				        <a href="">Account Setting -Not Yet Implemented-</a>
+				        <a href="account.php">Account Setting</a>
 				      </div>
 				      <div>
 				        <span>Sites</span>

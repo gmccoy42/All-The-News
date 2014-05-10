@@ -67,7 +67,7 @@
 				<div class="header"><a href="main.php"><img src="img/logo.png"></img></a></div>
 				<div class="barRight"></div>
 				
-				
+				<br>
 				<div style="float: left" id="my_menu" class="sdmenu">
 				    <div>
 				      	<?php if(isset($_SESSION['login'])) {?>
@@ -78,7 +78,7 @@
 				        	<a href="javascript:login('show');">Login</a> 
 				        	<a href="javascript:regShow();">Register</a> 
 				        <?php }?>
-				        <a href="">Account Setting -Not Yet Implemented-</a>
+				        <a href="account.php">Account Setting</a>
 				      </div>
 				      <div>
 				        <span>Sites</span>
