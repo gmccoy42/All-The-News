@@ -117,15 +117,15 @@ CREATE FUNCTION ATN_Update
 RETURNS INT
 BEGIN
 	/*DECLARE count INT DEFAULT (SELECT Count(*) FROM stories);*/
-	SET @count := (SELECT Count(*) FROM stories);
+	SET @count = (SELECT COUNT(*) FROM stories);
 
 	WHILE @count > 0 DO
-		SET @r := (SELECT rank FROM stories WHERE s_num=count);
-		SET @d := (SELECT s_date FROM stories WHERE s_num=count);
+		SET @r = (SELECT rank FROM stories WHERE s_num=@count);
+		SET @d = (SELECT s_date FROM stories WHERE s_num=@count);
 
-		UPDATE stories SET rank=dateRank(@r, @d) WHERE s_num=count;
+		UPDATE stories SET rank=dateRank(@d, @r) WHERE s_num=@count;
 
-		SET @count := count - 1;
+		SET @count = @count - 1;
 	END WHILE;
 
 	RETURN 1;

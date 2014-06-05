@@ -103,7 +103,20 @@
 					<div class="info">
 						<?php
 							include 'rss.php';
-					 		loadRSS($_SESSION['u_id']);
+
+							$q = "SELECT COUNT(*) FROM site WHERE u_id='" . $_SESSION['u_id'] . "';";
+							$link = mysqli_connect("127.0.0.1","root", "Conestoga1", "ATN_db");
+
+							if (!$link) 
+							{
+								echo "Oh no!";
+							}
+												  		
+							$result = mysqli_query($link,$q);
+							$siteNum = mysqli_fetch_array($result);
+					 		show($_SESSION['u_id'], 10, $siteNum['COUNT(*)']); // Magic numbers!
+
+					 		//loadRSS($_SESSION['u_id']);
 					 	?>
 					 </div>
 				</div>
