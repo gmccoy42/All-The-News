@@ -24,12 +24,15 @@ int main()
     struct timespec ts;
     ts.tv_sec = 1*60;
 
-    //nanosleep(&ts, NULL);
-
-  
-    cout << "\nUpdate"  << endl;
-    cout << std::system("php loadRss.php");
-    cout << endl;
+    while(1)
+	{
+	    
+	    cout << "\nUpdateing.....\n"  << endl;
+	    std::system("php loadRss.php");
+	    cout << "Update Complete";
+	    cout << endl;
+	    nanosleep(&ts, NULL);
+	}
 
     return EXIT_SUCCESS;
 }

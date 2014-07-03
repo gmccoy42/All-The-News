@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include 'rss.php';
+include 'loadRss.php';
 
 timed();
 
@@ -21,16 +21,17 @@ function timed()
 
 	$result = mysqli_query($link,$q);
 	$num = mysqli_fetch_array($result);
-	$x = 0;
+	$x = 1;
+    echo "Updating " . $x . "<br>";
 
 	while($x <= $num)
 	{
-		loadRSS($num);
-		echo $x . " Updated Successfully<br>";
+		upByUid($x);
+		echo "Updated Successfully<br>";
 		$x++;
 	}
 
-	sleep(0);
+	sleep(60*15);
 }
 
 

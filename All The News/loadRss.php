@@ -121,9 +121,7 @@ function upByUid($uid)
 
 
 			$item['title'] = addslashes($item['title']);
-			$dup = "SELECT duplicateCheck('" . $item['title'] . "');";
-			$result = mysqli_query($link,$dup);
-			//echo $dup . "<br>";
+			
 			$sql = "INSERT INTO stories(u_id, title, link, s_date, rank) VALUES('" . $uid . "', '" . $item['title'] . "', '" . $item['link'] . "', '" . $item['date'] . "', '" . $item['rank'] . "');";
 			$result = mysqli_query($link,$sql);
 			//echo $sql . "<br>";

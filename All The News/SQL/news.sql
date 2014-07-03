@@ -82,24 +82,6 @@ END;
 //
 DELIMITER ;
 
-DROP FUNCTION IF EXISTS duplicateCheck;
-DELIMITER //
-CREATE FUNCTION duplicateCheck
-(
-	t TEXT
-)
-RETURNS INT
-BEGIN
-	IF (SELECT  COUNT(*) FROM stories WHERE title=t GROUP BY title) > 0 THEN
-		DELETE FROM stories WHERE title=t;
-	END IF;
-
-	RETURN 1;
-END;
-//
-DELIMITER ;
-
-
 DROP EVENT IF EXISTS rankUpdate;
 DELIMITER //
 CREATE EVENT rankUpdate
