@@ -118,7 +118,7 @@
 						<?php 
 							$link = mysqli_connect("127.0.0.1","root", "Conestoga1", "ATN_db");
 
-							if (!$link) 
+							if (!$link)
 							{
 						    	echo "Oh no!";
 							}
@@ -137,12 +137,18 @@
 						  		echo "	<td>".$k."</td>";
 						  		$k2 = str_replace(" ","", $k);
 						  		echo "<td>&nbsp<input type='text' size='5' value='" . $row['val'] . "' name='" . $k2 . "'/></td>";
+						  		echo "<td>&nbsp<input type='checkbox' name='" . $k2 . "'/></td>";
 						  		echo "</tr>";
 						  	}
  	
 						  	echo "</table>";
-						  	echo "<input type='submit' name='submit' value='Update' />";
-						  	echo "</form>"
+						  	echo "<br>";
+
+						  	echo "<input type='submit' name='update_button' value='Update' />";
+						  	echo "<input type='submit' name='delete_button' value='Delete Selected' />";
+						  	
+						  	echo "</form>";
+						  	
 						  	
 	
 						?>

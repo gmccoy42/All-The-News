@@ -16,9 +16,21 @@ function show($uid, $storyLimit, $siteNum)
 		$href = $row['link'];
 		$date = $row['s_date'];
 		$rank = $row['rank'];
+		$s = $row['link'];
+
+		$s = str_replace('http://', '', $s);
+		$s = str_replace('www.', '', $s);
+		$s = str_replace('rss.', '', $s);
+		$start = strpos($s,'http://');
+		$start = $start + 7;
+		$end = strpos($s,'.');
+		//$end = 0 - $end; // convert to negative
+		//$end = $end -1;
+
+		$s = substr($s, 0, $end);
 		
 		echo '<p><strong><a href="'.$href.'" title="'.$title.'">'.$title.'</a></strong><br />';
-		echo '<small><em>Posted on '.$date.'</em></small></p>';
+		echo '<small><em>Posted on '.$date.'       </em></small>' .$s. '<p>';
 		//echo '<p>'.$description.'</p>';
 		echo '<p>'.$rank.'</p>';
 

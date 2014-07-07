@@ -122,12 +122,31 @@
 						  		
 						  	$result = mysqli_query($link,"SELECT * FROM site WHERE u_id='" . $_SESSION['u_id'] . "';"); 
 
+						  	echo "<form name='SiteForm' action='siteUpdate.php' method='post'>";
+						  	echo "<table>";
 						  	while($row = mysqli_fetch_array($result)) 
 						  	{
-
+						  		echo "<tr>";
 						  		$url = $row['url'];
-						  		echo '<p>'.$url.'</p>';
+						  		echo '<td>'.$url.'</td>';
+						  		$url = str_replace('/', '', $url);
+								$url = str_replace('.', '', $url);
+								$url = str_replace(':', '', $url);
+								$url = str_replace('\\', '', $url);
+						  		echo "<td>&nbsp<input type='checkbox' name='". $url ."'/></td>";
+						  		//echo "<td>&nbsp<input type='checkbox' name='soylent'/></td>";
+						  		echo "</tr>";
 						  	}
+
+
+						  	echo "</table>";
+						  	echo "<br>";
+						  	echo "<input type='submit' name='site_edit' value='Edit Selected' />";
+						  	echo "<input type='submit' name='site_delete' value='Delete Selected' />";
+						  	echo "</form>";
+						  	
+
+						  	
 	
 						?>
 						
